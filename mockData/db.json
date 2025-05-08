@@ -1,0 +1,63 @@
+{
+  "banners": [
+    {
+      "id": "1",
+      "image": "https://picsum.photos/800/300?random=1",
+      "title": "Limited Time Offer!",
+      "subtitle": "50% off on all home appliances"
+    },
+    {
+      "id": "2",
+      "image": "https://picsum.photos/800/300?random=2",
+      "title": "Exclusive Deals",
+      "subtitle": "Best sellers of the month"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Ceramic Dinner Plate Set",
+      "price": 1599,
+      "image": "https://picsum.photos/id/1080/400/300",
+      "tags": ["Free Delivery", "Selling Fast"],
+      "description": "Set of 6 glazed ceramic dinner plates with an elegant matte finish."
+    },
+    {
+      "id": "2",
+      "name": "Non-stick Frying Pan",
+      "price": 1299,
+      "image": "https://picsum.photos/id/292/400/300",
+      "tags": ["Free Delivery"],
+      "description": "Durable non-stick frying pan, perfect for everyday cooking."
+    },
+    {
+      "id": "3",
+      "name": "Electric Kettle 1.5L",
+      "price": 1799,
+      "image": "https://picsum.photos/id/1044/400/300",
+      "tags": ["Selling Fast"],
+      "description": "Stainless steel electric kettle with auto shut-off and boil-dry protection."
+    }
+  ],
+  "cart": [
+    {
+      "productId": "1",
+      "quantity": 2
+    },
+    {
+      "productId": "2",
+      "quantity": 1
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "items": [
+        {"productId": "1", "quantity": 2},
+        {"productId": "2", "quantity": 1}
+      ],
+      "paymentMethod": "Credit Card",
+      "total": 3997
+    }
+  ]
+}
