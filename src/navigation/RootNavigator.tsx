@@ -6,6 +6,8 @@ import {HomeScreen} from '../screens/home/HomeScreen';
 
 import {Text} from 'react-native';
 import {RootStackParamList} from './RootNavigator.type';
+import {SearchScreen} from '../screens/search/SearchScreen';
+import {ProductDetailsScreen} from '../screens/productDetails/productDetailsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -16,11 +18,8 @@ export const RootNavigator = () => {
         initialRouteName="Home"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Search" component={() => <Text>Search</Text>} />
-        <Stack.Screen
-          name="ProductDetails"
-          component={() => <Text>Product Details</Text>}
-        />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} />
         <Stack.Screen name="Cart" component={() => <Text>Cart</Text>} />
         <Stack.Screen name="Review" component={() => <Text>Review</Text>} />
         <Stack.Screen

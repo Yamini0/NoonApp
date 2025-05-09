@@ -2,47 +2,82 @@
   "banners": [
     {
       "id": "1",
-      "image": "https://picsum.photos/800/300?random=1",
-      "title": "Limited Time Offer!",
-      "subtitle": "50% off on all home appliances"
+      "image": "https://picsum.photos/800/300?random=101",
+      "title": "iPhone 16 Pro",
+      "subtitle": "Extraordinary Visual & Exceptional Power"
     },
     {
       "id": "2",
-      "image": "https://picsum.photos/800/300?random=2",
-      "title": "Exclusive Deals",
-      "subtitle": "Best sellers of the month"
+      "image": "https://picsum.photos/800/300?random=102",
+      "title": "Flash Deals for You",
+      "subtitle": "Hurry up! Limited time offers"
+    },
+    {
+      "id": "3",
+      "image": "https://picsum.photos/800/300?random=103",
+      "title": "Shop Now",
+      "subtitle": "New gadgets just arrived"
     }
+  ],
+  "categories": [
+    {"id": "1", "name": "Mobile", "icon": "mobile"},
+    {"id": "2", "name": "Headphones", "icon": "headphones"},
+    {"id": "3", "name": "Laptop", "icon": "laptop"},
+    {"id": "4", "name": "Speakers", "icon": "speaker"},
+    {"id": "5", "name": "Smartwatch", "icon": "watch"}
   ],
   "products": [
     {
       "id": "1",
-      "name": "Ceramic Dinner Plate Set",
-      "price": 1599,
-      "image": "https://picsum.photos/id/1080/400/300",
-      "tags": ["Free Delivery", "Selling Fast"],
-      "description": "Set of 6 glazed ceramic dinner plates with an elegant matte finish."
+      "name": "iPhone 16 Pro Max",
+      "brand": "Apple",
+      "price": 1399.99,
+      "originalPrice": 1499.99,
+      "colors": [
+        "Desert Titanium",
+        "Natural Titanium",
+        "White Titanium",
+        "Black Titanium"
+      ],
+      "storages": ["256 GB", "512 GB", "1 TB"],
+      "image": "https://picsum.photos/id/1018/400/300",
+      "tags": ["Free Delivery", "Bestseller"],
+      "description": "Extraordinary visual and power packed performance with 4K Ultra HD display"
     },
     {
       "id": "2",
-      "name": "Non-stick Frying Pan",
-      "price": 1299,
-      "image": "https://picsum.photos/id/292/400/300",
-      "tags": ["Free Delivery"],
-      "description": "Durable non-stick frying pan, perfect for everyday cooking."
+      "name": "Smartwatch Ultra",
+      "brand": "Apple",
+      "price": 99.99,
+      "image": "https://picsum.photos/id/1025/400/300",
+      "tags": ["Flash Deal", "New Arrival"],
+      "description": "Track your health, stay connected, and enjoy long battery life"
     },
     {
       "id": "3",
-      "name": "Electric Kettle 1.5L",
-      "price": 1799,
-      "image": "https://picsum.photos/id/1044/400/300",
-      "tags": ["Selling Fast"],
-      "description": "Stainless steel electric kettle with auto shut-off and boil-dry protection."
+      "name": "Smartwatch Ultra",
+      "brand": "Samsung",
+      "price": 99.99,
+      "image": "https://picsum.photos/id/1025/400/300",
+      "tags": ["Flash Deal", "New Arrival"],
+      "description": "Track your health, stay connected, and enjoy long battery life"
+    },
+    {
+      "id": "4",
+      "name": "Customized Mobile phone",
+      "brand": "Nothing",
+      "price": 99.99,
+      "image": "https://picsum.photos/id/1025/400/300",
+      "tags": ["Flash Deal", "New Arrival"],
+      "description": "Track your health, stay connected, and enjoy long battery life"
     }
   ],
   "cart": [
     {
       "productId": "1",
-      "quantity": 2
+      "quantity": 1,
+      "selectedColor": "Natural Titanium",
+      "selectedStorage": "512 GB"
     },
     {
       "productId": "2",
@@ -53,11 +88,11 @@
     {
       "id": "1",
       "items": [
-        {"productId": "1", "quantity": 2},
+        {"productId": "1", "quantity": 1},
         {"productId": "2", "quantity": 1}
       ],
       "paymentMethod": "Credit Card",
-      "total": 3997
+      "total": 1499.98
     }
   ]
 }

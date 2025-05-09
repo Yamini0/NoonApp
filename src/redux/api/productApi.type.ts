@@ -18,6 +18,8 @@ export interface Banner {
 export interface CartItem {
   productId: string;
   quantity: number;
+  selectedColor?: string;
+  selectedStorage?: string;
 }
 
 export interface Order {
