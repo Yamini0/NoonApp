@@ -4,8 +4,6 @@ import {
   Text,
   SectionList,
   FlatList,
-  Image,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
@@ -19,55 +17,23 @@ import {
 import BannerCarousel from '../../components/BannerCarousel';
 import {ProductSection, SectionItem} from './HomeScreen.type';
 import {useNavigation} from '@react-navigation/native';
+import SearchBar from '../../components/SearchBar';
+import {
+  HorizontalProductCard,
+  VerticalProductCard,
+} from '../../components/ProductCard';
 
-const SearchBar = React.memo(({navigation}) => (
+const HeaderSearchBar = React.memo(({navigation}) => (
   <View style={styles.searchWrapper}>
+    <View style={styles.flex}>
+      <SearchBar editable={false} shouldNavigate />
+    </View>
     <TouchableOpacity
-      style={styles.searchContainer}
-      onPress={() => navigation.navigate('Search')}>
-      <MaterialIcons name="search" size={20} color="#1C1C1B" />
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Search"
-        placeholderTextColor="#1C1C1B"
-        onPress={() => navigation.navigate('Search')}
-      />
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.cartButton}>
+      style={styles.cartButton}
+      onPress={() => navigation.navigate('Cart')}>
       <MaterialIcons name="shopping-cart" size={20} color="#1C1C1B" />
     </TouchableOpacity>
   </View>
-));
-
-const HorizontalProductCard = React.memo(({item}) => (
-  <TouchableOpacity style={styles.productCard}>
-    <Image source={{uri: item.image}} style={styles.productImage} />
-    <Text numberOfLines={1} style={styles.productName}>
-      {item.name}
-    </Text>
-    <Text style={styles.productPrice}>${item.price}</Text>
-  </TouchableOpacity>
-));
-
-const VerticalProductCard = React.memo(({item}) => (
-  <TouchableOpacity style={styles.verticalCard}>
-    <Image source={{uri: item.image}} style={styles.verticalImage} />
-    <View style={styles.rightContainer}>
-      <View style={styles.verticalInfo}>
-        <Text numberOfLines={1} style={styles.productName}>
-          {item.name}
-        </Text>
-        <Text style={styles.productPrice}>${item.price}</Text>
-      </View>
-      <View style={styles.tagContainer}>
-        {(item.tags || []).map((tag, idx) => (
-          <Text key={idx} style={styles.tag}>
-            {tag}
-          </Text>
-        ))}
-      </View>
-    </View>
-  </TouchableOpacity>
 ));
 
 export const HomeScreen = () => {
@@ -102,7 +68,7 @@ export const HomeScreen = () => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={product => product.id}
           renderItem={({item}) => <HorizontalProductCard item={item} />}
-          contentContainerStyle={{paddingHorizontal: 16}}
+          contentContainerStyle={styles.paddingHorizontal}
         />
       ) : (
         <VerticalProductCard item={item} />
@@ -123,7 +89,7 @@ export const HomeScreen = () => {
         <SectionList
           ListHeaderComponent={
             <>
-              <SearchBar navigation={navigation} />
+              <HeaderSearchBar navigation={navigation} />
               <BannerCarousel banners={banners} />
             </>
           }
@@ -146,6 +112,7 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {flex: 1},
+  paddingHorizontal: {paddingHorizontal: 16},
   wrapper: {flex: 1, backgroundColor: '#fff'},
   headerGradient: {
     position: 'absolute',
@@ -157,7 +124,6 @@ const styles = StyleSheet.create({
   searchWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
     paddingHorizontal: 16,
   },
   searchContainer: {
@@ -203,69 +169,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#222',
   },
-  productCard: {
-    width: 140,
-    backgroundColor: '#f1f1f1',
-    borderRadius: 8,
-    padding: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 4,
-    elevation: 2,
-    marginEnd: 16,
-  },
-  productImage: {
-    width: '100%',
-    height: 100,
-    borderRadius: 6,
-  },
-  productName: {
-    marginTop: 8,
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#333',
-  },
-  productPrice: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#000',
-  },
-  verticalCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 16,
-    marginBottom: 12,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: '#f5f5f5',
-  },
-  verticalImage: {
-    width: 100,
-    height: 100,
-    resizeMode: 'cover',
-    borderRadius: 6,
-  },
-  verticalInfo: {
-    flex: 1,
-    padding: 10,
-    justifyContent: 'center',
-  },
-  rightContainer: {
-    padding: 10,
-  },
-  tagContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  tag: {
-    backgroundColor: '#e0f0ff',
-    color: '#007bff',
-    fontSize: 12,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 10,
-    marginRight: 6,
-    marginTop: 4,
-  },
+  flex: {flex: 1},
 });

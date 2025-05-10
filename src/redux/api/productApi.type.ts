@@ -6,6 +6,7 @@ export interface Product {
   images: string[];
   description: string;
   tags: string[];
+  brand: string;
 }
 
 export interface Banner {
