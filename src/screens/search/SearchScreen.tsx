@@ -13,6 +13,8 @@ import {useGetProductsQuery} from '../../redux/api/productApi';
 
 import {Product} from '../../redux/api/productApi.type';
 import {VerticalProductCard} from '../../components/ProductCard';
+import {LoadingScreen} from '../../components/LoadingScreen';
+import {ErrorScreen} from '../../components/ErrorScreen';
 
 const MIN_QUERY_LENGTH = 2;
 
@@ -39,10 +41,10 @@ export const SearchScreen = () => {
       );
     }
     if (isLoading) {
-      return <Text style={styles.infoText}>Loading...</Text>;
+      return <LoadingScreen />;
     }
     if (isError) {
-      return <Text style={styles.infoText}>Something went wrong!</Text>;
+      return <ErrorScreen />;
     }
     return <Text style={styles.infoText}>No products found.</Text>;
   }, [isError, isLoading, shouldSearch]);

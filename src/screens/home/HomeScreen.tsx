@@ -24,6 +24,8 @@ import {
 } from '../../components/ProductCard';
 import {useSelector} from 'react-redux';
 import {selectTotalCartItemCount} from '../../redux/slice/cartSlice';
+import {LoadingScreen} from '../../components/LoadingScreen';
+import {ErrorScreen} from '../../components/ErrorScreen';
 
 const HeaderSearchBar = React.memo(({navigation, totalItems}) => (
   <View style={styles.searchWrapper}>
@@ -46,8 +48,16 @@ const HeaderSearchBar = React.memo(({navigation, totalItems}) => (
 
 export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
-  const {data: banners = []} = useGetBannersQuery();
-  const {data: products = []} = useGetProductsQuery();
+  const {
+    data: banners = [],
+    isLoading: bannersLoading,
+    isError: bannersError,
+  } = useGetBannersQuery();
+  const {
+    data: products = [],
+    isLoading: productLoading,
+    isError: productError,
+  } = useGetProductsQuery();
 
   const totalItems = useSelector(selectTotalCartItemCount);
 
@@ -101,6 +111,14 @@ export const HomeScreen = () => {
       ),
     [navigation],
   );
+
+  if (productLoading || bannersLoading) {
+    return <LoadingScreen />;
+  }
+
+  if (bannersError || productError) {
+    return <ErrorScreen />;
+  }
 
   return (
     <SafeAreaView edges={['left']} style={styles.wrapper}>
