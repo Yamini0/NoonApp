@@ -33,6 +33,10 @@
       "brand": "Apple",
       "price": 1399.99,
       "originalPrice": 1499.99,
+      "rating": 4.8,
+      "inStock": true,
+      "warranty": "1 year manufacturer warranty",
+      "offers": ["10% Instant Bank Discount", "No-cost EMI available"],
       "colors": [
         "Desert Titanium",
         "Natural Titanium",
@@ -42,34 +46,72 @@
       "storages": ["256 GB", "512 GB", "1 TB"],
       "image": "https://picsum.photos/id/1018/400/300",
       "tags": ["Free Delivery", "Bestseller"],
-      "description": "Extraordinary visual and power packed performance with 4K Ultra HD display"
+      "description": [
+        "6.9-inch Super Retina XDR Display",
+        "A18 Bionic chip for lightning-fast performance",
+        "ProMotion technology with adaptive refresh rates",
+        "Improved low-light photography",
+        "Long-lasting battery life up to 28 hours"
+      ]
     },
     {
       "id": "2",
       "name": "Smartwatch Ultra",
       "brand": "Apple",
       "price": 99.99,
+      "rating": 4.6,
+      "inStock": true,
+      "warranty": "6 months warranty",
+      "offers": ["Flat ₹500 off on prepaid orders"],
       "image": "https://picsum.photos/id/1025/400/300",
       "tags": ["Flash Deal", "New Arrival"],
-      "description": "Track your health, stay connected, and enjoy long battery life"
+      "description": [
+        "Advanced health tracking sensors",
+        "Water resistant up to 50 meters",
+        "Seamless Bluetooth connectivity",
+        "AMOLED display with vibrant colors",
+        "Up to 10 days battery life"
+      ]
     },
     {
       "id": "3",
       "name": "Smartwatch Ultra",
       "brand": "Samsung",
-      "price": 99.99,
+      "price": 29.99,
+      "rating": 4.4,
+      "inStock": false,
+      "warranty": "6 months warranty",
+      "offers": ["Extra 5% off with app purchase"],
       "image": "https://picsum.photos/id/1025/400/300",
       "tags": ["Flash Deal", "New Arrival"],
-      "description": "Track your health, stay connected, and enjoy long battery life"
+      "description": [
+        "Lightweight aluminum case",
+        "Integrated heart rate monitor",
+        "Compatible with Android and iOS",
+        "Magnetic charging dock",
+        "Customizable watch faces"
+      ]
     },
     {
       "id": "4",
       "name": "Customized Mobile phone",
       "brand": "Nothing",
-      "price": 99.99,
+      "price": 109.99,
+      "rating": 4.2,
+      "inStock": true,
+      "warranty": "1 year warranty",
+      "offers": ["Free screen protector worth ₹999", "Exchange available"],
+      "storages": ["256 GB", "512 GB"],
+      "colors": ["Jet Black", "White"],
       "image": "https://picsum.photos/id/1025/400/300",
       "tags": ["Flash Deal", "New Arrival"],
-      "description": "Track your health, stay connected, and enjoy long battery life"
+      "description": [
+        "Transparent design with LED glyph interface",
+        "Nothing OS built on clean Android UI",
+        "Dual-camera setup with image stabilization",
+        "Supports 5G network and wireless charging",
+        "Fast-charging up to 45W"
+      ]
     }
   ],
   "cart": [

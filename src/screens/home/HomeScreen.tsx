@@ -22,17 +22,25 @@ import {
   HorizontalProductCard,
   VerticalProductCard,
 } from '../../components/ProductCard';
+import {useSelector} from 'react-redux';
+import {selectTotalCartItemCount} from '../../redux/slice/cartSlice';
 
-const HeaderSearchBar = React.memo(({navigation}) => (
+const HeaderSearchBar = React.memo(({navigation, totalItems}) => (
   <View style={styles.searchWrapper}>
     <View style={styles.flex}>
       <SearchBar editable={false} shouldNavigate />
     </View>
-    <TouchableOpacity
-      style={styles.cartButton}
-      onPress={() => navigation.navigate('Cart')}>
-      <MaterialIcons name="shopping-cart" size={20} color="#1C1C1B" />
-    </TouchableOpacity>
+    <>
+      <View style={styles.cartItemContainer}>
+        <Text style={styles.cartItem}>{totalItems}</Text>
+      </View>
+
+      <TouchableOpacity
+        style={styles.cartButton}
+        onPress={() => navigation.navigate('Cart')}>
+        <MaterialIcons name="shopping-cart" size={20} color="#1C1C1B" />
+      </TouchableOpacity>
+    </>
   </View>
 ));
 
@@ -40,6 +48,8 @@ export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
   const {data: banners = []} = useGetBannersQuery();
   const {data: products = []} = useGetProductsQuery();
+
+  const totalItems = useSelector(selectTotalCartItemCount);
 
   const navigation = useNavigation();
 
@@ -67,13 +77,29 @@ export const HomeScreen = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={product => product.id}
-          renderItem={({item}) => <HorizontalProductCard item={item} />}
+          renderItem={({item}) => (
+            <HorizontalProductCard
+              item={item}
+              onPress={() =>
+                navigation.navigate('ProductDetails', {
+                  product: item,
+                })
+              }
+            />
+          )}
           contentContainerStyle={styles.paddingHorizontal}
         />
       ) : (
-        <VerticalProductCard item={item} />
+        <VerticalProductCard
+          item={item}
+          onPress={() =>
+            navigation.navigate('ProductDetails', {
+              product: item,
+            })
+          }
+        />
       ),
-    [],
+    [navigation],
   );
 
   return (
@@ -89,7 +115,10 @@ export const HomeScreen = () => {
         <SectionList
           ListHeaderComponent={
             <>
-              <HeaderSearchBar navigation={navigation} />
+              <HeaderSearchBar
+                navigation={navigation}
+                totalItems={totalItems}
+              />
               <BannerCarousel banners={banners} />
             </>
           }
@@ -170,4 +199,19 @@ const styles = StyleSheet.create({
     color: '#222',
   },
   flex: {flex: 1},
+  cartItemContainer: {
+    zIndex: 100,
+    width: 25,
+    height: 25,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#e06666',
+    right: 36,
+    top: 2,
+    position: 'absolute',
+  },
+  cartItem: {
+    color: 'white',
+  },
 });
