@@ -18,7 +18,7 @@ import {ErrorScreen} from '../../components/ErrorScreen';
 
 const MIN_QUERY_LENGTH = 2;
 
-export const SearchScreen = () => {
+export const SearchScreen: React.FC = ({navigation}) => {
   const [query, setQuery] = useState('');
   const {data: products = [], isLoading, isError} = useGetProductsQuery();
 
@@ -51,9 +51,16 @@ export const SearchScreen = () => {
 
   const renderItem = useCallback(
     ({item}: ListRenderItemInfo<Product>) => (
-      <VerticalProductCard item={item} />
+      <VerticalProductCard
+        item={item}
+        onPress={() =>
+          navigation.navigate('ProductDetails', {
+            product: item,
+          })
+        }
+      />
     ),
-    [],
+    [navigation],
   );
 
   return (
