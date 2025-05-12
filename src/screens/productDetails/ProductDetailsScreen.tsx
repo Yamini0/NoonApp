@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {
   View,
   Text,
@@ -23,7 +23,7 @@ import {
   decrementQuantity,
 } from '../../redux/slice/cartSlice';
 
-export const ProductDetailsScreen = () => {
+export const ProductDetailsScreen: React.FC = ({navigation}) => {
   const route = useRoute<RouteProp<RootStackParamList, 'ProductDetails'>>();
   const product = route?.params?.product;
   const dispatch = useDispatch();
@@ -101,6 +101,10 @@ export const ProductDetailsScreen = () => {
     );
   };
 
+  const handleBuyNow = useCallback(() => {
+    navigation.navigate('Confirmation');
+  }, [navigation]);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <NavBar renderRight />
@@ -112,7 +116,7 @@ export const ProductDetailsScreen = () => {
           <Text style={styles.productBrand}>
             by<Text style={{color: '#007bff'}}> {product?.brand}</Text>
           </Text>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.quantityContainer}>
             <Text style={styles.productPrice}>${product?.price}</Text>
             <QuantitySelector
               quantity={quantity}
@@ -150,7 +154,7 @@ export const ProductDetailsScreen = () => {
         <TouchableOpacity style={styles.cartInfo} onPress={handleAddToCart}>
           <Text style={styles.cartText}>Add to Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.addButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.addButton} onPress={handleBuyNow}>
           <Text style={styles.addText}>Buy now</Text>
         </TouchableOpacity>
       </View>
@@ -229,5 +233,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     flex: 1,
     lineHeight: 20,
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

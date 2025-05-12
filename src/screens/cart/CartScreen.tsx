@@ -11,7 +11,7 @@ import NavBar from '../../components/NavBar';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Product} from '../../redux/api/productApi.type';
 
-export const CartScreen = ({navigation}) => {
+export const CartScreen: React.FC = ({navigation}) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state?.cart?.items);
 
@@ -113,9 +113,19 @@ export const CartScreen = ({navigation}) => {
         </View>
 
         <TouchableOpacity
-          style={styles.checkoutButton}
-          onPress={() => navigation.navigate('CartReview')}>
-          <Text style={styles.checkoutText}>Checkout</Text>
+          style={[
+            styles.checkoutButton,
+            cartItems?.length === 0 && styles.checkoutButtonDisabled,
+          ]}
+          disabled={cartItems?.length === 0}
+          onPress={() => navigation.navigate('Confirmation')}>
+          <Text
+            style={[
+              styles.checkoutText,
+              cartItems?.length === 0 && {color: '#fff'},
+            ]}>
+            Checkout
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -206,5 +216,8 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     color: '#a3a3a3',
+  },
+  checkoutButtonDisabled: {
+    backgroundColor: '#cccccc',
   },
 });
