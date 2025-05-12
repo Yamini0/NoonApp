@@ -7,6 +7,7 @@ import {
   StyleSheet,
   GestureResponderEvent,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export const HorizontalProductCard = React.memo(
   ({
@@ -30,9 +31,19 @@ export const VerticalProductCard = React.memo(
   ({
     item,
     onPress,
+    onIncrement,
+    onDecrement,
+    onRemove,
+    showQuantityControls = false,
+    quantity,
   }: {
     item: any;
     onPress?: (e: GestureResponderEvent) => void;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
+    onRemove?: () => void;
+    showQuantityControls?: boolean;
+    quantity: number | string;
   }) => (
     <TouchableOpacity style={styles.verticalCard} onPress={onPress}>
       <Image source={{uri: item.image}} style={styles.verticalImage} />
@@ -44,12 +55,35 @@ export const VerticalProductCard = React.memo(
           <Text style={styles.productPrice}>${item.price}</Text>
         </View>
         <View style={styles.tagContainer}>
-          {(item.tags || []).map((tag: string, idx: number) => (
+          {(item?.tags || []).map((tag: string, idx: number) => (
             <Text key={idx} style={styles.tag}>
               {tag}
             </Text>
           ))}
         </View>
+
+        {showQuantityControls && (
+          <View style={styles.quantityContainer}>
+            <View style={styles.quantityButtons}>
+              <TouchableOpacity
+                onPress={onDecrement}
+                style={styles.quantityButton}>
+                <Text style={styles.quantityText}>-</Text>
+              </TouchableOpacity>
+              <Text style={[styles.quantityText, {color: '#000'}]}>
+                {quantity}
+              </Text>
+              <TouchableOpacity
+                onPress={onIncrement}
+                style={styles.quantityButton}>
+                <Text style={styles.quantityText}>+</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity onPress={onRemove} style={styles.removeButton}>
+              <MaterialIcons name="delete" color="#e53935" size={20} />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </TouchableOpacity>
   ),
@@ -108,6 +142,7 @@ const styles = StyleSheet.create({
   tagContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    // marginTop: 8,
   },
   tag: {
     backgroundColor: '#e0f0ff',
@@ -118,5 +153,42 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginRight: 6,
     marginTop: 4,
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  quantityButtons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#e4e4e4',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  quantityButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  quantityText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+  },
+  removeButton: {
+    marginLeft: 16,
+    borderRadius: 8,
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  removeText: {
+    color: '#e53935',
+    fontSize: 14,
+    fontWeight: '500',
   },
 });

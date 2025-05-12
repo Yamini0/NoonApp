@@ -27,16 +27,20 @@ const cartSlice = createSlice({
         productId: string;
         selectedColor?: string;
         selectedStorage?: string;
+        details: any; // Ideally replace `any` with a proper Product type
       }>,
     ) => {
-      console.log('--->addToCart called', action.payload);
-      const {productId, selectedColor, selectedStorage} = action.payload;
+      console.log('--->addToCart called', action.payload.details);
+      const {productId, selectedColor, selectedStorage, details} =
+        action.payload;
+
       const existingItem = state.items.find(
         item =>
           item.productId === productId &&
           item.selectedColor === selectedColor &&
           item.selectedStorage === selectedStorage,
       );
+
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
@@ -45,6 +49,7 @@ const cartSlice = createSlice({
           quantity: 1,
           selectedColor,
           selectedStorage,
+          details, // storing complete product info here
         });
       }
     },

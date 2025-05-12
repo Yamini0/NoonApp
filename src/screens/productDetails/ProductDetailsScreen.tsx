@@ -76,6 +76,7 @@ export const ProductDetailsScreen = () => {
         selectedColor,
         selectedStorage,
         product,
+        details: product,
       }),
     );
   };
