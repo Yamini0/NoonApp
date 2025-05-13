@@ -30,7 +30,7 @@ export const ErrorScreen = () => {
         style={styles.lottieView}
       />
 
-      <Button title="Go to Home" onPress={handleGoHome} />
+      <Text style={styles.message}>Opps! something went wrong...</Text>
     </View>
   );
 };
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     height: 150,
   },
   message: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     marginTop: 20,
     color: '#7a7a7a',
