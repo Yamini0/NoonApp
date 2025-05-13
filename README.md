@@ -7,8 +7,8 @@ This is a simple E-Commerce mobile application built with **React Native CLI** f
 ## 📱 Features
 
 - **Home Screen**: Displays banners and product carousels with tags (Free Delivery, Selling Fast).
-- **Search Screen**: Allows users to search products with live filter functionality.
-- **Product Details Screen**: Shows product details with image slider, quantity selector, and "Add to Cart" option.
+- **Search Screen**: Allows users to search products.
+- **Product Details Screen**: Shows product details, quantity selector, etc, and "Add to Cart" option.
 - **Cart Screen**: View cart items, adjust quantity, remove items, and see order summary, consist of **Cart Review Screen**: Shows payment method, itemized summary, and place order button.
 - **Confirmation Screen**: Displays success message and checkmark after placing order.
 
